@@ -1,3 +1,6 @@
+#bg{
+	background: url(./image/bg.jpg);
+}
 #canvas{
 	display: block;
 	position: absolute;
