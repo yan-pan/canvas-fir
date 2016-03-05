@@ -7,8 +7,11 @@ window.onload=function(){
     //var kaiguan=true;//该谁落子
     kaiguan=localStorage.x?false:true;
     //划线
+    
     var huaqipan = function() {
     ctx.clearRect(0,0,600,600);
+    ctx.fillStyle='rgba(255,255,210,0.8)';
+    ctx.fillRect(0,0,600,600);
     for(var i = 0; i < ROW; i++){
       var li = ctx.createLinearGradient(0,0,560,0);
       li.addColorStop(0.5,'#999');
@@ -18,7 +21,7 @@ window.onload=function(){
       ctx.moveTo(20,i*40 + 20.5);
       ctx.lineTo(580,i*40 + 20.5);
       ctx.stroke();
-
+      
       var li = ctx.createLinearGradient(0,0,0,560);
       li.addColorStop(0.5,'#333');
       li.addColorStop(1,'#444');
@@ -30,12 +33,12 @@ window.onload=function(){
     }
     ctx.fillStyle = 'black';
     ctx.beginPath();
-    ctx.arc(300.5,300.5,3,0,Math.PI*2);
+    ctx.arc(300.5,300.5,5,0,Math.PI*2);
     ctx.fill();
     for(var i = 0; i < z.length; i++){
       for(var j = 0; j < z.length; j++){
         ctx.beginPath();
-        ctx.arc(z[i],z[j],3,0,Math.PI*2);
+        ctx.arc(z[i],z[j],5,0,Math.PI*2);
         ctx.fill(); 
       }
     }
@@ -61,7 +64,7 @@ var luozi=function(x,y,color){
     ctx.arc(zx,zy,14,0,Math.PI*2);
     ctx.fill(); 
 }
-
+//落子
 var qiziimg=document.querySelector("#sucai");
 var luozi2=function(x,y,color){
     var zx=40*x+4.5;
@@ -84,13 +87,14 @@ canvas.onclick=function(e){
     var x=Math.round((e.offsetX-20.5)/40);
     var y=Math.round((e.offsetY-20.5)/40);
 
+
     if(qizi[x+'_'+y]){return;}
     luozi(x,y,kaiguan);
     qizi[x+'_'+y]=kaiguan?'black':'white';
     if(kaiguan){
         if(panduan(x,y,"black")){
-          alert("heiziying");
-          if(confirm('shifuzailaiyici')){
+          alert("黑棋赢");
+          if(confirm('是否再来一局')){
            localStorage.clear();
            qizi={};
            huaqipan();
@@ -102,8 +106,8 @@ canvas.onclick=function(e){
 }
 }else{
     if(panduan(x,y,"white")){
-      alert("baiziying");
-      if(confirm('shifuzailaiyici')){
+      alert("白棋赢");
+      if(confirm('是否再来一局')){
        localStorage.clear();
        qizi={};
        huaqipan();
@@ -121,7 +125,22 @@ if(!kaiguan){
 }else{
     localStorage.removeItem('x');
 }
+
+/*huiqi.onclick=function(){
+         for(var i in qizi){
+           var newqizi = {};
+           if(i != (x+'_'+y)){
+              newqizi[i] = qizi[i];
+           }
+         }
+         qizi = newqizi;
+         kaiguan = !kaiguan;
+         ctx.clearRect(x*40+20.5-18,y*40+20.5-18,36,36);
+       }*/
 }
+
+
+
 var xy2id=function(x,y){
     return x+'_'+y;
 }
@@ -163,7 +182,7 @@ if(localStorage.data){
 canvas.ondblclick=function(e){
     e.stopPropagation();
 }
-document.ondblclick=function(){
+chongzhi.onclick=function(){
     localStorage.clear();
     location.reload();
 }
@@ -185,7 +204,6 @@ document.ondblclick=function(){
     ctx.lineTo(580,300);
     ctx.stroke();*/
     /*ctx.fillRect(20,20,560,560);*/
-
     
 
 }
