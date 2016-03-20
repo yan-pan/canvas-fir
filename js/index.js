@@ -51,11 +51,11 @@ color  boolean  true代表黑子 false代表白子*/
 var luozi=function(x,y,color){
     var zx=40*x+20.5;
     var zy=40*y+20.5;
-    var black=ctx.createRadialGradient(zx,zy,1,zx,zy,18);
+    var black=ctx.createLinearGradient(zx,zy,1,zx,zy,18);
     black.addColorStop(0.1,'#555');
     black.addColorStop(1,'black');
     
-    var white=ctx.createRadialGradient(zx,zy,1,zx,zy,18);
+    var white=ctx.createLinearGradient(zx,zy,1,zx,zy,18);
     white.addColorStop(0.1,'#fff');
     white.addColorStop(1,'#ddd');
 
