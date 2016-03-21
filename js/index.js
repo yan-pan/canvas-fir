@@ -10,11 +10,11 @@ window.onload=function(){
     
     var huaqipan = function() {
     ctx.clearRect(0,0,600,600);
-    ctx.fillStyle='rgba(255,255,210,0.8)';
+    ctx.fillStyle='rgba(179,198,121,0.7)';
     ctx.fillRect(0,0,600,600);
     for(var i = 0; i < ROW; i++){
       var li = ctx.createLinearGradient(0,0,560,0);
-      li.addColorStop(0.5,'#999');
+      li.addColorStop(0.5,'#000');
       li.addColorStop(1,'black');
       ctx.strokeStyle = li;
       ctx.beginPath();
@@ -52,12 +52,12 @@ var luozi=function(x,y,color){
     var zx=40*x+20.5;
     var zy=40*y+20.5;
     var black=ctx.createLinearGradient(zx,zy,1,zx,zy,18);
-    black.addColorStop(0.1,'#555');
-    black.addColorStop(1,'black');
+    black.addColorStop(0.1,'#000');
+    black.addColorStop(1,'#ccc');
     
     var white=ctx.createLinearGradient(zx,zy,1,zx,zy,18);
     white.addColorStop(0.1,'#fff');
-    white.addColorStop(1,'#ddd');
+    white.addColorStop(1,'#f65c5c');
 
     ctx.fillStyle=color?black:white;
     ctx.beginPath();
